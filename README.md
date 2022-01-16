@@ -1,0 +1,7 @@
+# SuperalgosDocsTools
+
+Python Script that lists and extract info (incl. wordcount) out of all Superalgos Docs files.
+
+Output example (csv):
+![image](https://user-images.githubusercontent.com/76875781/149655552-1d0a688f-1bd2-4338-b700-0483b4673934.png)
+
