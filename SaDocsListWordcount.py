@@ -7,30 +7,13 @@ import sys
 import datetime
 
 project_path = "/home/simon/Superalgos/Projects"  # Startpoint - must be the ".../Superalgos/Projects" directory. Doesn't work with (Windows) backslashes.
-stop = 20  # Number of files to process (-1 = all). Only for testing purposes.
+stop = -1  # Number of files to process (-1 = all).
 csv_filename = 'Superalgos_Docs_list.csv'  # Filename for the output csv file. Date/Time (%y%m%d-%h%m) will be added before.
 head = ['Project', 'Category', 'type', 'wordcount', 'Path', 'File', 'topic', 'tutorial', 'pageNumber', 'language']  # Column headers (and order of columns) for the csv file.
-# Available are: 'Project', 'Category', 'type' (title), 'Wordcount', 'Path', 'File', 'topic', 'tutorial', 'pageNumber', 'Language' (if available)
-
-
-# Extract title ('type') and wordcount out of a json file
-def read_json_2(file_path):
-    wordcount = 0
-    output = {'type': 'none', 'wordcount': 'err', 'topic': 'none', 'tutorial': 'none', 'pageNumber': 'none'}
-    with open(file_path, 'r') as file:
-        obj = json.load(file)
-    for lvl1 in obj:
-        if lvl1 in output:
-            output[lvl1] = obj[lvl1]
-        if 'translations' in obj[dict(lvl1)]:
-            for lvl2 in obj[lvl1]['translations']:
-                language += lvl2['language'] + ' '
-            if not 'DE' in language:
-                print(lvl2['text'])
-    return output
+# Available are: 'Project', 'Category', 'type' (title), 'wordcount', 'Path', 'File', 'topic', 'tutorial', 'pageNumber', 'language' (if available)
 
 # Extract info and wordcount out of a json file
-def read_json_3(file_path, cli_print = False):
+def read_json(file_path, cli_print = False):
     output = {'type': 'none', 'wordcount': 0, 'topic': 'none', 'tutorial': 'none', 'pageNumber': 'none'}
     with open(file_path, 'r') as file:
         obj = json.load(file)
@@ -139,38 +122,6 @@ def read_json_3(file_path, cli_print = False):
         print(output)
     return output
 
-# Extract title ('type') and wordcount out of a json file
-def read_json(file_path):
-    wordcount = 0
-    output = {'type': 'none', 'wordcount': 'err', 'topic': 'none', 'tutorial': 'none', 'pageNumber': 'none'}
-    with open(file_path, 'r') as file:
-        obj = json.load(file)
-    for i in obj:
-        lvl1 = obj[i]
-        if isinstance(lvl1, dict):
-            for j in lvl1:
-                lvl2 = lvl1[j]
-                if False: # isinstance(lvl2, dict) or isinstance(lvl2, list):
-                    for k in lvl2:
-                        if isinstance(k, dict) or isinstance(k, list):
-                            pass
-                            print(f'3: {i}: {j}: ...skipped')
-                        else:
-                            if k == 'text':
-                                print(f'3: {i}: {k}: ({words(lvl2[k])}) {lvl2[k]}')
-                                wordcount += words(lvl2[k])
-                else:
-                    print(f'2: {i}: {j}: ({words(lvl2)}) {lvl2}')
-                    wordcount += words(lvl2)
-        if isinstance(lvl1, list):
-            print(f'1: ...Liste')
-        else:
-            print(f'1: {i}: {lvl1}')
-            output[i] = lvl1
-
-    print(f'\n4: Output: {output}')
-    return output
-
 # Count words in a string
 def words(text):
     words = len(str(text).split(' ')) - 1
@@ -206,7 +157,7 @@ def filelist(project_path):
                         if i == stop: # stopper (for testing)
                             break
                         line = info_line(path)  # get info from file path
-                        add = read_json_3(path)  # get info out of the json file
+                        add = read_json(path)  # get info out of the json file
                         for key in add:
                             line[key] = add[key]  # add json info to the path info dictionary
                         # print(f"{line['Wordcount']} {line['Project']} > {line['Category']} > {line['Title']}")
@@ -228,4 +179,4 @@ def filelist(project_path):
     print(f'List stored in {os.getcwd()}/{output_file}.')
 
 filelist(project_path)
-# print(read_json_3('/home/simon/Superalgos/Projects/Foundations/Schemas/Docs-Tutorials/B/Basic/Basic-Education/basic-education-001-basic-education-tutorial.json'))
+# print(read_json('/home/simon/Superalgos/Projects/Foundations/Schemas/Docs-Tutorials/B/Basic/Basic-Education/basic-education-001-basic-education-tutorial.json')) # for testing
