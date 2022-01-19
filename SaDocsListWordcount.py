@@ -3,15 +3,15 @@
 import os
 import json
 import csv
-import sys
 import datetime
 
 project_path = "/home/simon/Superalgos/Projects"  # Startpoint - must be the ".../Superalgos/Projects" directory. Doesn't work with (Windows) backslashes.
-stop = -1  # Number of files to process (-1 = all).
+stop = 5  # Number of files to process (-1 = all).
 csv_filename = 'Superalgos_Docs_list.csv'  # Filename for the output csv file. Date/Time (%y%m%d-%h%m) will be added before.
 head = ['Project', 'Category', 'type', 'wordcount', 'Path', 'File', 'topic', 'tutorial', 'pageNumber', 'language']  # Column headers (and order of columns) for the csv file.
 # Available are: 'Project', 'Category', 'type' (title), 'wordcount', 'Path', 'File', 'topic', 'tutorial', 'pageNumber', 'language' (if available)
 cli_print = False
+
 
 # Extract info and wordcount out of a json file
 def read_json(file_path, cli_print):
@@ -145,41 +145,51 @@ def info_line(file_path):
 # Search and process all Docs files
 def filelist(project_path):
     i = 0
-    date = datetime.datetime.now()
-    output_file = (date.strftime('%y%m%d-%H%M')) + '_' + csv_filename
-    with open(output_file, 'w') as csvfile:
-        csvwriter = csv.writer(csvfile)
-        csvwriter.writerow(head)
+    file_list = []
 
-        for (root,dirs,files) in os.walk(project_path):
-            for f in files:
-                # if True:
-                try:
-                    path = root+'/'+f
-                    if "Schemas/Docs-" in root:
-                        if i == stop: # stopper (for testing)
-                            break
-                        line = info_line(path)  # get info from file path
-                        add = read_json(path, False)  # get info out of the json file
-                        for key in add:
-                            line[key] = add[key]  # add json info to the path info dictionary
-                        # print(f"{line['Wordcount']} {line['Project']} > {line['Category']} > {line['Title']}")
-                        row = []
-                        for name in head:
-                            if name in line:
-                                row.append(line[name])  # generate comma separated line from dictionary
-                            else:
-                                line[name] = 'none'
-                                row.append(line[name])
-                        csvwriter.writerow(row)
-                        print(line['File'])
-                        i += 1
-                except:
-                    print('Error processing ' + f + '. Check JSON structure and keys.')  # Add str(sys.exc_info()) for error details
-            if i == stop:  # stopper (for testing)
-                break
+    for (root,dirs,files) in os.walk(project_path):
+        for f in files:
+            if True:
+            # try:
+                path = root+'/'+f
+                if "Schemas/Docs-" in root:
+                    if i == stop: # stopper (for testing)
+                        break
+                    line = info_line(path)  # get info from file path
+                    add = read_json(path, cli_print)  # get info out of the json file
+                    for key in add:
+                        line[key] = add[key]  # add json info to the path info dictionary
+                    # print(f"{line['Wordcount']} {line['Project']} > {line['Category']} > {line['Title']}")
+                    # print(line['File'])
+                    file_list.append(line)
+                    i += 1
+            # except:
+                # print('Error processing ' + f + '. Check JSON structure and keys.')  # Add str(sys.exc_info()) for error details
+        if i == stop:  # stopper (for testing)
+            break
+    return file_list
     print(f'Processed {i} Docs files in {project_path}.')
     print(f'List stored in {os.getcwd()}/{output_file}.')
 
-filelist(project_path)
+def save_csv(file_list, csv_filename):
+    with open(csv_filename, 'w') as csvfile:
+        date = datetime.datetime.now()
+        csv_file = (date.strftime('%y%m%d-%H%M')) + '_' + csv_filename
+        csvwriter = csv.writer(csvfile)
+        line = file_list[0]
+        head = []
+        for name in line:
+            head.append(name)  # generate comma separated line from dictionary
+        csvwriter.writerow(head)
+        for line in file_list:
+            row = []
+            for name in line:
+                row.append(line[name])  # generate comma separated line from dictionary
+            csvwriter.writerow(row)
+
+# file_list = filelist(project_path)
+# for i in file_list:
+#     print(i)
+# save_csv(file_list, csv_filename)
+
 # print(read_json('/home/simon/Superalgos/Projects/Foundations/Schemas/Docs-Tutorials/B/Basic/Basic-Education/basic-education-001-basic-education-tutorial.json')) # for testing

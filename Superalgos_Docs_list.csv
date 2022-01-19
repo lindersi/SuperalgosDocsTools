@@ -1,0 +1,6 @@
+Project,Category,File,Path,type,wordcount,topic,tutorial,pageNumber,language
+Social-Bots,Docs-Nodes,discord-bot.json,Projects/Social-Bots/Schemas/Docs-Nodes/D/Discord/Discord-Bot/discord-bot.json,Discord Bot,148,none,none,none,
+Social-Bots,Docs-Nodes,social-bots.json,Projects/Social-Bots/Schemas/Docs-Nodes/S/Social/Social-Bots/social-bots.json,Social Bots,71,none,none,none,ES 
+Social-Bots,Docs-Nodes,social-bot-command.json,Projects/Social-Bots/Schemas/Docs-Nodes/S/Social/Social-Bot-Command/social-bot-command.json,Social Bot Command,272,none,none,none,
+Social-Bots,Docs-Nodes,slack-bot.json,Projects/Social-Bots/Schemas/Docs-Nodes/S/Slack/Slack-Bot/slack-bot.json,Slack Bot,166,none,none,none,
+Social-Bots,Docs-Nodes,telegram-bot.json,Projects/Social-Bots/Schemas/Docs-Nodes/T/Telegram/Telegram-Bot/telegram-bot.json,Telegram Bot,135,none,none,none,DE 
