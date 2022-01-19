@@ -11,10 +11,12 @@ stop = -1  # Number of files to process (-1 = all).
 csv_filename = 'Superalgos_Docs_list.csv'  # Filename for the output csv file. Date/Time (%y%m%d-%h%m) will be added before.
 head = ['Project', 'Category', 'type', 'wordcount', 'Path', 'File', 'topic', 'tutorial', 'pageNumber', 'language']  # Column headers (and order of columns) for the csv file.
 # Available are: 'Project', 'Category', 'type' (title), 'wordcount', 'Path', 'File', 'topic', 'tutorial', 'pageNumber', 'language' (if available)
+cli_print = False
 
 # Extract info and wordcount out of a json file
-def read_json(file_path, cli_print = False):
-    output = {'type': 'none', 'wordcount': 0, 'topic': 'none', 'tutorial': 'none', 'pageNumber': 'none'}
+def read_json(file_path, cli_print):
+    output = {'type': 'none', 'wordcount': 0, 'topic': 'none', 'tutorial': 'none', 'pageNumber': 'none', 'language': 'none'}
+    lang = ''
     with open(file_path, 'r') as file:
         obj = json.load(file)
     for key_1 in obj:
@@ -120,6 +122,7 @@ def read_json(file_path, cli_print = False):
             output[key_1] = val_1
     if cli_print:
         print(output)
+    output['language'] = lang
     return output
 
 # Count words in a string
@@ -157,7 +160,7 @@ def filelist(project_path):
                         if i == stop: # stopper (for testing)
                             break
                         line = info_line(path)  # get info from file path
-                        add = read_json(path)  # get info out of the json file
+                        add = read_json(path, False)  # get info out of the json file
                         for key in add:
                             line[key] = add[key]  # add json info to the path info dictionary
                         # print(f"{line['Wordcount']} {line['Project']} > {line['Category']} > {line['Title']}")
