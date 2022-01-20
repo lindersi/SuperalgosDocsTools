@@ -9,6 +9,6 @@ Output example (yymmdd-hhmm_Superalgos_Docs_list.csv):
 
 *SaDocsMerger.py*
 
-Appends german translations from separate files to the original repo files.
+Appends german translations from separate files to the original repo files. Processes all files in old_commits.txt.
 
 
