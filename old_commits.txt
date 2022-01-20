@@ -65,5 +65,3 @@ Projects/Foundations/Schemas/Docs-Tutorials/W/Welcome/Welcome-to-Superalgos/welc
 Projects/Foundations/Schemas/Docs-Tutorials/W/Welcome/Welcome-to-Superalgos/welcome-to-superalgos-068-tutorial-step-ready.-set.-go.json
 Projects/Foundations/Schemas/Docs-Tutorials/W/Welcome/Welcome-to-Superalgos/welcome-to-superalgos-103-tutorial-step-monitoring-the-fun-way.json
 Projects/Foundations/Schemas/Docs-Tutorials/W/Welcome/Welcome-to-Superalgos/welcome-to-superalgos-7.1-tutorial-step-buy-the-token.json
-Projects/Governance/Schemas/Docs-Nodes/L/Liquidity/Liquidity-Program/liquidity-program.json
-Projects/Governance/Schemas/Docs-Nodes/L/Liquidity/Liquidity-Programs/liquidity-programs.json
