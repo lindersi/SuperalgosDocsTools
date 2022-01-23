@@ -1,6 +1,6 @@
 # SuperalgosDocsTools
 
-## SaDocsList/SaDocsListWordcount.py
+## SaDocsListWordcount.py
 
 Lists and extract info (incl. wordcount) out of all Superalgos Docs files into csv format.
 
