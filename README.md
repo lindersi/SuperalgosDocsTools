@@ -9,7 +9,7 @@ Output example (yymmdd-hhmm_Superalgos_Docs_list.csv):
 
 ## SaDocsMerger.py
 
-Appends german translations from separate files to the original repo files. Processes all files that are listed in files_list.txt.
+Appends translations from separate files to the original repo files. Processes all files that are listed in files_list.txt.
 See comments for usage and details.
 
 My personal workflow:
