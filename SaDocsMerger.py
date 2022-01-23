@@ -2,10 +2,11 @@
 
 import os
 import json
-import sys
+import shutil
 
 
 project_path = "/home/simon/Superalgos/"
+clone_path = "/home/simon/Superalgos-Klon/"
 backup_path = "/home/simon/Superalgos-Backup/"
 save_path = "/home/simon/Superalgos-Test/"  # z.B. "/home/simon/Superalgos-Test/". Mit save_path = project_path werden die Originaldateien überschrieben
 old_files_list = "old_commits.txt"
@@ -19,10 +20,15 @@ with open(old_files_list, 'r') as file:
         files.append(line.rstrip())
 # print(files)
 
+# Backup
+for file in files:
+    os.makedirs(os.path.dirname(clone_path + file), exist_ok=True)
+    shutil.copy(project_path + file, clone_path + file)
+
 # Aktualisiertes Pendant öffnen und auf deutsche Übersetzungen prüfen
 for file in files:
-    if True:
-    # try:
+    # if True:
+    try:
         new_path = project_path + file
         with open(new_path, 'r') as new_json:
             new_file = json.load(new_json)  # Objekt (dict) aus der aktuellen Datei erzeugen
@@ -64,22 +70,21 @@ for file in files:
                         de = True
                 # Falls nicht, Übersetzung aus meiner alten Datei einfügen
                 if not de:
-                    # old_transl = old_file['paragraphs'][p]['translations']
-                    # for j in old_transl:
-                    #     if j['language'] == 'DE':
-                    #         old_de = j
-                    #         new_transl.append(old_de)
-                    pass
+                    old_transl = old_file['paragraphs'][p]
+                    if 'translations' in old_transl:
+                        for j in old_transl['translations']:
+                            if j['language'] == 'DE':
+                                old_de = j
+                                new_transl.append(old_de)
             # Wenn noch gar keine Übersetzung vorhanden, 'translations' inkl. meinem Ersteintrag neu erstellen
             else:
-                # old_paragr = old_file['paragraphs'][p]
-                # old_transl = old_paragr['translations']
-                # for k in old_transl:
-                #     if k['language'] == 'DE':
-                #         old_de = k
-                #         new_def = new_file['paragraphs'][p]
-                #         new_def['translations'] = [old_de]
-                pass
+                old_paragr = old_file['paragraphs'][p]
+                if 'translations' in old_paragr:
+                    for k in old_paragr['translations']:
+                        if k['language'] == 'DE':
+                            old_de = k
+                            new_def = new_file['paragraphs'][p]
+                            new_def['translations'] = [old_de]
             p += 1
 
         # Geänderte Datei im save_path speichern
@@ -94,7 +99,7 @@ for file in files:
         old_json.close()
         test_json.close()
 
-    # except:
-        # print('Error processing ' + file + ': ' + str(sys.exc_info()))
+    except:
+        print('Error processing ' + file + ': ' + str(sys.exc_info()))
 
 # Geänderte Dateien in new_commits.txt auflisten
