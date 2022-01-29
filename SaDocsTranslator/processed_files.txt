@@ -1,0 +1,9 @@
+Processed:
+
+Ignored (already translated):
+
+Errors:
+Projects/Foundations/Schemas/Docs-Topics/D/Design/Design-Space/design-space-004-keyboard-shortcuts-to-nodes.json: (<class 'KeyError'>, KeyError('translations'), <traceback object at 0x7f21756930c0>)
+Projects/Foundations/Schemas/Docs-Topics/D/Design/Design-Space/design-space-002-basic-navigation.json: (<class 'ValueError'>, ValueError('text must not be empty'), <traceback object at 0x7f21756a13c0>)
+Projects/Foundations/Schemas/Docs-Topics/D/Design/Design-Space/design-space-001-design-space-hierarchy.json: (<class 'KeyError'>, KeyError('translations'), <traceback object at 0x7f21757f8940>)
+Projects/Foundations/Schemas/Docs-Topics/D/Design/Design-Space/design-space-003-nodes-menu.json: (<class 'KeyError'>, KeyError('translations'), <traceback object at 0x7f2175613f80>)
