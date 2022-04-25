@@ -47,7 +47,8 @@ def translate(text):
 with open(files_list, 'r') as file:
     files = []
     for line in file:
-        files.append(line.rstrip())
+        if len(line.rstrip()) > 0:  # ignore empty lines
+            files.append(line.rstrip())
 
 # Backup original Superalgos files
 for file in files:

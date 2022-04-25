@@ -1,15 +1,2 @@
-Projects/Foundations/Schemas/Docs-Topics/H/How/How-To/how-to-001-detach-and-attach-nodes.json
-Projects/Foundations/Schemas/Docs-Topics/I/Introduction/Introduction/introduction-001-fundamental-superalgos-concepts.json
-Projects/Foundations/Schemas/Docs-Topics/I/Introduction/Introduction/introduction-002-bots-in-superalgos.json
-Projects/Foundations/Schemas/Docs-Topics/I/Introduction/Introduction/introduction-003-hierarchies.json
-Projects/Foundations/Schemas/Docs-Topics/I/Introduction/Introduction/introduction-004-workflows.json
-Projects/Foundations/Schemas/Docs-Topics/I/Introduction/Introduction/introduction-005-workspaces.json
-Projects/Foundations/Schemas/Docs-Topics/I/Introduction/Introduction/introduction-006-nodes-and-structures-of-nodes.json
-Projects/Foundations/Schemas/Docs-Topics/T/Trading/Trading-Engine/trading-engine-006-base-asset-and-quoted-asset.json
-Projects/Foundations/Schemas/Docs-Topics/T/Trading/Trading-Logic/trading-logic-001-situations-conditions-and-formulas.json
-Projects/Foundations/Schemas/Docs-Topics/T/Trading/Trading-Logic/trading-logic-002-syntax-overview.json
-Projects/Foundations/Schemas/Docs-Topics/T/Trading/Trading-Logic/trading-logic-002-syntax-overview.json
-Projects/Foundations/Schemas/Docs-Topics/T/Trading/Trading-Systems/trading-systems-003-the-trigger-stage.json
-Projects/Foundations/Schemas/Docs-Topics/T/Trading/Trading-Systems/trading-systems-004-open-stage-initial-targets.json
-Projects/Foundations/Schemas/Docs-Topics/T/Trading/Trading-Systems/trading-systems-009-the-close-stage.json
-Projects/Foundations/Schemas/Docs-Topics/I/Introduction/Introduction/introduction-007-references.json
+Projects/Foundations/Schemas/Docs-Topics/D/Design/Design-Space/design-space-002-basic-navigation.json
+Projects/Foundations/Schemas/Docs-Topics/H/How/How-To/how-to-002-establish-and-remove-references.json

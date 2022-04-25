@@ -9,7 +9,7 @@ import sys
 project_path = "/home/simon/Superalgos/"  # The local Superalgos folder - update Superalgos before processing!
 backup_path = "/home/simon/Superalgos-bkp/"  # Backup path for original files before processing. Is created if needed.
 source_path = "/home/simon/Superalgos-DE/"  # Superalgos-Structure with the translations to merge
-save_path = "/home/simon/Superalgos-Test/"  # Path for merged files (save_path = project_path to overwrite originals)
+save_path = "/home/simon/Superalgos/"  # Path for merged files (save_path = project_path to overwrite originals)
 files_list = "files-to-process.txt"  # Contains the paths ("Projects/.../...json") of the files to process
 lang = "DE"  # Language code of the language to add
 

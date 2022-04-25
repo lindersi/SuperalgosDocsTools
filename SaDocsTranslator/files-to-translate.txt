@@ -1,4 +1,5 @@
-Projects/Foundations/Schemas/Docs-Topics/D/Design/Design-Space/design-space-004-keyboard-shortcuts-to-nodes.json
-Projects/Foundations/Schemas/Docs-Topics/D/Design/Design-Space/design-space-002-basic-navigation.json
-Projects/Foundations/Schemas/Docs-Topics/D/Design/Design-Space/design-space-001-design-space-hierarchy.json
-Projects/Foundations/Schemas/Docs-Topics/D/Design/Design-Space/design-space-003-nodes-menu.json
+Projects/Data-Mining/Schemas/Docs-Nodes/S/Sensor/Sensor-Bot/sensor-bot.json
+Projects/Data-Mining/Schemas/Docs-Nodes/A/API/API-Data-Fetcher-Bot/api-data-fetcher-bot.json
+Projects/Data-Mining/Schemas/Docs-Nodes/I/Indicator/Indicator-Bot/indicator-bot.json
+
+
